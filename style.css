@@ -1,0 +1,71 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: repeating-linear-gradient(45deg, #006400 0%, #006400 1%, #ffffff 1%, #ffffff 2%, #006400 2%, #006400 3%, #ffffff 3%, #ffffff 4%, #006400 4%, #006400 5%, #ffffff 5%, #ffffff 6%, #006400 6%, #006400 7%, #ffffff 7%, #ffffff 8%, #006400 8%, #006400 9%, #ffffff 9%, #ffffff 10%, #006400 10%, #006400 11%, #ffffff 11%, #ffffff 12%, #006400 12%, #006400 13%, #ffffff 13%, #ffffff 14%, #006400 14%, #006400 15%, #ffffff 15%, #ffffff 16%, #006400 16%, #006400 17%, #ffffff 17%, #ffffff 18%, #006400 18%, #006400 19%, #ffffff 19%, #ffffff 20%);
+  color: white;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.container {
+  padding: 20px;
+  background: #ffffff;  /* Solid white background for the container */
+  border-radius: 15px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: visible; /* Make sure contents aren't cut off */
+}
+
+h1.glow {
+  font-size: 3em;
+  color: #ff0000;  /* Red color for the title */
+  text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff6347; /* Red glow effect */
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff6347;
+  }
+  to {
+    text-shadow: 0 0 20px #ff0000, 0 0 30px #ff6347, 0 0 40px #ff6347;
+  }
+}
+
+.message {
+  margin: 15px 0;
+  font-size: 1.2em;
+  color: #333;  /* Dark color for better readability */
+}
+
+.additional-message {
+  margin: 10px 0;
+  font-size: 1.2em;
+  color: #e60000;  /* Dark color for better readability */
+}
+
+.check-email {
+  font-size: 0.8em;
+  color: #000;  /* Black color for visibility */
+}
+
+.gift-card img {
+  width: 60%; /* Adjust the width as needed */
+  max-width: 300px; /* Set a max width to prevent the image from becoming too large */
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* 3D shadow around the image */
+  margin-top: 30px; /* Adjust to move the image lower */
+  position: relative; /* Ensure it's properly positioned within the container */
+}
+
+.footer {
+  font-size: 1em;
+  margin-top: 20px;
+  color: #333;  /* Dark color for visibility */
+}
