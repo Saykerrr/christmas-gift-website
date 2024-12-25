@@ -3,8 +3,30 @@ const audio = new Audio('https://www.cjoint.com/doc/24_12/NLzixkwIkRb_HUMBLE-Chr
 audio.loop = true; // Loop the audio for continuous playback
 audio.volume = 0.5; // Adjust volume (0.0 to 1.0)
 
-// Try to play audio on load (may be blocked by browsers)
-audio.play().catch(() => console.log('Autoplay blocked by the browser'));
+// Wait for user interaction to start playback
+const playMusicButton = document.createElement('button');
+playMusicButton.textContent = 'Play Music 🎵';
+playMusicButton.style.position = 'absolute';
+playMusicButton.style.top = '50%';
+playMusicButton.style.left = '50%';
+playMusicButton.style.transform = 'translate(-50%, -50%)';
+playMusicButton.style.padding = '15px 30px';
+playMusicButton.style.fontSize = '1.5em';
+playMusicButton.style.color = '#fff';
+playMusicButton.style.backgroundColor = '#ff6347';
+playMusicButton.style.border = 'none';
+playMusicButton.style.borderRadius = '10px';
+playMusicButton.style.cursor = 'pointer';
+playMusicButton.style.boxShadow = '0 8px 15px rgba(0, 0, 0, 0.3)';
+document.body.appendChild(playMusicButton);
+
+// Start music when the button is clicked
+playMusicButton.addEventListener('click', () => {
+  audio.play().then(() => {
+    console.log('Audio started');
+    playMusicButton.remove(); // Remove the button after music starts
+  }).catch(err => console.error('Error starting audio:', err));
+});
 
 // Handle mute/unmute functionality
 const muteButton = document.querySelector('.mute-button');
@@ -35,7 +57,7 @@ const createSnowflake = () => {
 setInterval(createSnowflake, 200);
 
 const style = document.createElement('style');
-style.innerHTML = `
+style.innerHTML = 
   .snowflake {
     position: absolute;
     top: 0;
@@ -50,5 +72,5 @@ style.innerHTML = `
       transform: translateY(100vh);
     }
   }
-`;
+;
 document.head.appendChild(style);
