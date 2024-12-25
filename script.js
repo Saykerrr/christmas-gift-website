@@ -3,30 +3,40 @@ const audio = new Audio('https://www.cjoint.com/doc/24_12/NLzixkwIkRb_HUMBLE-Chr
 audio.loop = true; // Loop the audio for continuous playback
 audio.volume = 0.5; // Adjust volume (0.0 to 1.0)
 
-// Wait for user interaction to start playback
-const playMusicButton = document.createElement('button');
-playMusicButton.textContent = 'Play Music 🎵';
-playMusicButton.style.position = 'absolute';
-playMusicButton.style.top = '50%';
-playMusicButton.style.left = '50%';
-playMusicButton.style.transform = 'translate(-50%, -50%)';
-playMusicButton.style.padding = '15px 30px';
-playMusicButton.style.fontSize = '1.5em';
-playMusicButton.style.color = '#fff';
-playMusicButton.style.backgroundColor = '#ff6347';
-playMusicButton.style.border = 'none';
-playMusicButton.style.borderRadius = '10px';
-playMusicButton.style.cursor = 'pointer';
-playMusicButton.style.boxShadow = '0 8px 15px rgba(0, 0, 0, 0.3)';
-document.body.appendChild(playMusicButton);
+// Function to create the play music button
+function createPlayMusicButton() {
+  // Create the play music button if it doesn't exist
+  const existingButton = document.querySelector('.play-music-button');
+  if (!existingButton) {
+    const playMusicButton = document.createElement('button');
+    playMusicButton.classList.add('play-music-button'); // Add a class for easy targeting
+    playMusicButton.textContent = 'Play Music 🎵';
+    playMusicButton.style.position = 'fixed';
+    playMusicButton.style.top = '50%';
+    playMusicButton.style.left = '50%';
+    playMusicButton.style.transform = 'translate(-50%, -50%)';
+    playMusicButton.style.padding = '15px 30px';
+    playMusicButton.style.fontSize = '1.5em';
+    playMusicButton.style.color = '#fff';
+    playMusicButton.style.backgroundColor = '#ff6347';
+    playMusicButton.style.border = 'none';
+    playMusicButton.style.borderRadius = '10px';
+    playMusicButton.style.cursor = 'pointer';
+    playMusicButton.style.boxShadow = '0 8px 15px rgba(0, 0, 0, 0.3)';
+    document.body.appendChild(playMusicButton);
 
-// Start music when the button is clicked
-playMusicButton.addEventListener('click', () => {
-  audio.play().then(() => {
-    console.log('Audio started');
-    playMusicButton.remove(); // Remove the button after music starts
-  }).catch(err => console.error('Error starting audio:', err));
-});
+    // Start music when the button is clicked
+    playMusicButton.addEventListener('click', () => {
+      audio.play().then(() => {
+        console.log('Audio started');
+        playMusicButton.style.display = 'none'; // Hide the button after music starts
+      }).catch(err => console.error('Error starting audio:', err));
+    });
+  }
+}
+
+// Call the function to ensure the button is created every time the page is loaded
+createPlayMusicButton();
 
 // Handle mute/unmute functionality
 const muteButton = document.querySelector('.mute-button');
@@ -56,8 +66,9 @@ const createSnowflake = () => {
 
 setInterval(createSnowflake, 200);
 
+// Snowflake styles
 const style = document.createElement('style');
-style.innerHTML = 
+style.innerHTML = `
   .snowflake {
     position: absolute;
     top: 0;
@@ -72,5 +83,5 @@ style.innerHTML =
       transform: translateY(100vh);
     }
   }
-;
+`;
 document.head.appendChild(style);
