@@ -50,6 +50,10 @@ h1.glow {
   color: #333;
 }
 
+.additional-message {
+  color: #ff0000; /* Change color to red */
+}
+
 .check-email {
   font-size: 0.8em;
   color: #000;
