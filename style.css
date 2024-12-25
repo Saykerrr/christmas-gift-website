@@ -91,5 +91,4 @@ h1.glow {
 }
 
 .mute-button.muted:before {
-  content: '🔇';
-}
+  content: '🔇'
